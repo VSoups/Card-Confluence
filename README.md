@@ -1,4 +1,4 @@
-# MERN-Stack Infrastructure
+# Card Confluence
 
-Clone this repo for future MERN-Stack projects
+Under development...
 
