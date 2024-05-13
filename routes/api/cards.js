@@ -7,3 +7,5 @@ const cardsCtrl = require('../../controllers/api/cards');
 
 // GET /cards/named?fuzzy=(name)
 router.get('/named', ensureLoggedIn, cardsCtrl.getCardByName);
+
+module.exports = router;
