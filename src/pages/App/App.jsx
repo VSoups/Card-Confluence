@@ -1,9 +1,10 @@
 import './App.css';
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import HomePage from '../HomePage/HomePage';
+import ProfilePage from '../ProfilePage/ProfilePage';
+import DeckPage from '../DeckPage/DeckPage';
 import NavBar from '../../components/NavBar/NavBar';
 import { getUser } from '../../utilities/users-service';
 
@@ -12,19 +13,17 @@ export default function App() {
 
   return (
     <main className="App">
-      { user ?
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components */}
-            <Route path="/orders/new" element={<NewOrderPage />} />
-            &nbsp; | &nbsp;
-            <Route path="/orders" element={<OrderHistoryPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/deck" element={<DeckPage />} />
+            <Route path="/account" element={<AuthPage user={user} setUser={setUser} />} />
+            <Route path="/*" element={<Navigate to={"/"} />} />
           </Routes>
         </>
-        :
-        <AuthPage setUser={setUser} />
-      }
     </main>
   );
 }

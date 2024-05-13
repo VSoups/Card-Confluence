@@ -25,6 +25,7 @@ export default async function sendRequest(url, method = 'GET', payload = null) {
     // use the url we received as an argument
     // and add the options we created in this function
     const res = await fetch(url, options);
+    console.log('send-request response ', res)
     // if res.ok is false, then something went wrong
     if (res.ok) return res.json();
     // sendRequest always returns a promise, so if there is a malfunction, we must return an error

@@ -12,3 +12,8 @@ router.post('/login', usersCtrl.login);
 
 
 module.exports = router;
+
+// function userTest(userData, next) {
+//     console.log('routes ', userData);
+//     next();
+// }

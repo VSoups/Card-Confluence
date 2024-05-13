@@ -1,5 +1,5 @@
 import sendRequest from "./send-request";
-const BASE_URL = '/api/users';
+const BASE_URL = "/api/users";
 
 export async function signUp(userData) {
   // BASE_URL = url / 'POST' = method / userData = payload | based on sendRequest parameters
@@ -7,6 +7,7 @@ export async function signUp(userData) {
 }
 
 export async function login(credentials) {
+  console.log('users-api ', credentials)
   return sendRequest(`${BASE_URL}/login`, 'POST', credentials);
 }
 

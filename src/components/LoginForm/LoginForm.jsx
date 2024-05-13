@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as usersService from '../../utilities/users-service';
 
-export default function LoginForm({ setUser }) {
+export default function LoginForm({ user, setUser }) {
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -12,19 +14,22 @@ export default function LoginForm({ setUser }) {
     setCredentials({ ...credentials, [evt.target.name]: evt.target.value });
     setError('');
   }
-
+  
   async function handleSubmit(evt) {
     // Prevent form from being submitted to the server
+    // will resolve to the user object included in the
     evt.preventDefault();
     try {
       // The promise returned by the signUp service method 
-      // will resolve to the user object included in the
       // payload of the JSON Web Token (JWT)
       const user = await usersService.login(credentials);
+      console.log('LoginForm user ', user)
       setUser(user);
+      navigate("/");
     } catch {
       setError('Log In Failed - Try Again');
     }
+
   }
 
   return (
