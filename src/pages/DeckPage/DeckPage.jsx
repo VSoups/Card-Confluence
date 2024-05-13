@@ -1,18 +1,30 @@
+import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
 
 export default function DeckPage() {
-  async function handleCheckToken() {
-    // this is where we make a try/catch block in case of a failed promise
+  const [card, setCard] = useState('');
 
-    // goes to usersService after click
-    const expDate = await usersService.checkToken();
-    console.log('Expires: ', expDate);
+  async function cardSearch(evt) {
+    evt.preventDefault();
+    const cardFuzzy = card.split(' ');
+    console.log(cardFuzzy);
+    // const fetchCard = await 
+    setCard('');
+    evt.target.name.value = '';
+  }
+
+  function handleInput(evt) {
+    const cardInput = evt.target.value;
+    setCard(cardInput);
   }
 
   return (
     <>
       <h1>Deck Page</h1>
-      <button onClick={handleCheckToken}>Check When My Login Expires</button>
+      <form onSubmit={cardSearch}>
+        <input type="text" name="name" onChange={handleInput} placeholder="Search for a card" />
+        <button type="submit">Search</button>
+      </form>
     </>
   );
 }
