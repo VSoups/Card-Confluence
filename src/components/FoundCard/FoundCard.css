@@ -1,0 +1,15 @@
+.PreviewPanel {
+    display: grid;
+    grid-template-columns: 17rem 1.5rem;
+    grid-template-rows: 1.5rem auto;
+    gap: 3px;
+}
+
+.CardImg {
+    width: 17rem;
+    grid-row-start: 2;
+}
+
+.PreviewPanel > button {
+    grid-column-start: 2;
+}

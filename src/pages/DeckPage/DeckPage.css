@@ -1,5 +1,12 @@
-.SearchBox {
-    width: 30rem;
+.CardAdding {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0 2rem;
 }
+
+.SearchBox {
+    width: max-content;
+}
+

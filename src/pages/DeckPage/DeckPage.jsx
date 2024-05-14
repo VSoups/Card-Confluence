@@ -6,14 +6,19 @@ import './DeckPage.css';
 export default function DeckPage({ user }) {
   const [searchCard, setSearchCard] = useState(null);
 
-
   return (
     <>
       <h1>Deck Page</h1>
-      <div className="SearchBox">
-        <CardSearch setSearchCard={setSearchCard} />
-        <FoundCard searchCard={searchCard} />
-      </div>
+      <section className="CardAdding">
+        <div className="SearchBox">
+          <CardSearch setSearchCard={setSearchCard} />
+        </div>
+        {searchCard && 
+          <div className="PreviewPanel">
+            <FoundCard searchCard={searchCard} setSearchCard={setSearchCard} />
+          </div>
+        }
+      </section>
     </>
   );
 }

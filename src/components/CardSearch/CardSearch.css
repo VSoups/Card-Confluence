@@ -1,0 +1,11 @@
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.5fr;
+    grid-template-rows: 0.5fr auto;
+    column-gap: 5px;
+    row-gap: 2px;
+}
+
+form > input {
+    grid-column: 1 / 3;
+}

@@ -1,0 +1,40 @@
+.NewDeck {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.NewDeckForm {
+    width: 15rem;
+    height: max-content;
+}
+
+.NewDeckForm {
+    display: grid;
+    grid-template-columns: 1fr 0.25fr;
+    grid-template-rows: 1fr auto;
+}
+
+.NewDeckForm > input, .NewDeckForm > label {
+    grid-column: 1/2;
+}
+
+.NewDeckForm > input {
+    grid-row: 2/3;
+    height: 1.5rem;
+}
+
+.NewDeckForm > label {
+    grid-row: 1/2;
+}
+
+.CloseForm {
+    grid-column-start: 2;
+}
+
+.SubmitForm {
+    height: 1.5rem;
+}

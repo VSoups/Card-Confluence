@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as cardsAPI from '../../utilities/cards-api';
+import './CardSearch.css';
 
 export default function CardSearch({ setSearchCard }) {
   const [card, setCard] = useState('');
@@ -27,6 +28,7 @@ export default function CardSearch({ setSearchCard }) {
   return (
     <>
       <form onSubmit={cardSearch}>
+        <label>Add Card</label>
         <input type="text" name="name" onChange={handleInput} placeholder="Search for a card" />
         <button type="submit">Search</button>
         <p>{error}</p>
