@@ -18,6 +18,7 @@ const cardSchema = new Schema({
     type_line: String,
     keywords: Array,
     legalities: Array,
+    image_uris: Object,
 }, {
     timestamps: true,
 });

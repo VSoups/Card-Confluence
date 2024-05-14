@@ -19,7 +19,7 @@ export default function App() {
             {/* Route components */}
             <Route path="/" element={<HomePage user={user} />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/deck" element={<DeckPage />} />
+            <Route path="/deck" element={<DeckPage user={user} />} />
             <Route path="/account" element={<AuthPage user={user} setUser={setUser} />} />
             <Route path="/*" element={<Navigate to={"/"} />} />
           </Routes>

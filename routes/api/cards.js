@@ -5,7 +5,7 @@ const cardsCtrl = require('../../controllers/api/cards');
 
 // all paths start with /api/cards
 
-// GET /cards/named?fuzzy=(name)
-router.get('/named', ensureLoggedIn, cardsCtrl.getCardByName);
+// GET /api/cards/search
+router.get('/search/:cardName', ensureLoggedIn, cardsCtrl.getCardByName);
 
 module.exports = router;
