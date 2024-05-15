@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as deckAPI from '../../utilities/decks-api';
 import DeckPreview from '../../components/DeckPreview/DeckPreview';
 import './HomePage.css';
@@ -8,11 +8,16 @@ export default function HomePage({ user, decks }) {
     const [newDeck, setNewDeck] = useState(true);
     const [deckName, setDeckName] = useState('');
     const [error, setError] = useState('');
+    // deck array for index grid
+    const fullList = decks.sort((d1, d2) => new Date(d2.createdAt) - new Date(d1.createdAt))
+    .map((deck) => <Link to={`deck/${deck._id}`} key={deck._id}><DeckPreview deck={deck} key={deck._id} /></Link>);
 
+    // hide/show new deck form
     function showNewDeck() {
         newDeck ? setNewDeck(false) : setNewDeck(true);
     }
 
+    // create deck form submit function
     async function handleNewDeck(evt) {
         evt.preventDefault();
         const deck = {
@@ -20,7 +25,7 @@ export default function HomePage({ user, decks }) {
             user: user._id,
         }
         try {
-            const newDeck = await deckAPI.createNewDeck(deck);
+            const newDeck = await deckAPI.createNew(deck);
             if (typeof(newDeck) === 'string') setError(newDeck);
             setDeckName('');
             evt.target.name.value = '';
@@ -32,13 +37,11 @@ export default function HomePage({ user, decks }) {
         }
     }
 
+    // new deck name input
     function handleText(evt) {
         const name = evt.target.value;
         setDeckName(name);
     }
-
-    // deck array for index grid
-    const fullList = decks.map((deck) => <Link to='/deck' key={deck._id}><DeckPreview deck={deck} key={deck._id} /></Link>)
 
 
     return (
@@ -51,7 +54,7 @@ export default function HomePage({ user, decks }) {
                         <button onClick={showNewDeck} className="CloseForm">X</button>
                         <form onSubmit={handleNewDeck} className="NewDeckForm">
                             <label>Deck Name:</label>
-                            <input type="text" onChange={handleText} name="name" placeholder='Lotus Field Combo...' />
+                            <input type="text" onChange={handleText} name="name" required placeholder='Lotus Field Combo...' />
                             <button type="submit" className="SubmitForm">Create</button>
                         </form>
                     </section>

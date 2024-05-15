@@ -1,5 +1,7 @@
 export default function DeckPreview({ deck }) {
     return (
-        <p>{deck.name}</p>
+        <div className="DeckBox">
+            <p>{deck.name}</p>
+        </div>
     );
 }

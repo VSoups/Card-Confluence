@@ -11,7 +11,7 @@ export default function CardSearch({ setSearchCard }) {
     let inputCard = card.split(' ').join('+');
     try {
       const fetchCard = await cardsAPI.getCardByName(inputCard);
-      console.log(fetchCard);
+      // console.log(fetchCard);
       setSearchCard(fetchCard);
     } catch (error) {
       console.log(error);

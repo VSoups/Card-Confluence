@@ -1,15 +1,21 @@
 .PreviewPanel {
     display: grid;
     grid-template-columns: 17rem 1.5rem;
-    grid-template-rows: 1.5rem auto;
+    grid-template-rows: 1.5rem 11rem 1.5rem 11rem;
     gap: 3px;
 }
 
 .CardImg {
     width: 17rem;
-    grid-row-start: 2;
+    grid-row: 2 / span 2 ;
 }
 
-.PreviewPanel > button {
+.ClosePreview {
     grid-column-start: 2;
+    background-color: tomato;
+}
+
+.AddCard {
+    grid-row-start: 3;
+    background-color: lawngreen;
 }

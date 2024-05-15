@@ -1,5 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const cardSchema = require('./card');
+
+const cardListSchema = new Schema({
+    qty: { type: Number, default: 1 },
+    // card: cardSchema,
+}, {
+    timestamps: true,
+    toJSON: { virtuals: true },
+});
 
 const deckSchema = new Schema({
     user: {

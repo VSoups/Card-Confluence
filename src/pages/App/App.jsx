@@ -13,9 +13,11 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [decks, setDecks] = useState([]);
 
+  // deck index page not updated after new deck is made
+  // fetchAll function returning twice
   useEffect(() => {
     async function fetchAll() {
-      const allDecks = await decksAPI.getAllDecks();
+      const allDecks = await decksAPI.getAll();
       console.log(allDecks);
       setDecks(allDecks);
     }
@@ -31,7 +33,7 @@ export default function App() {
             <Route path="/" element={<HomePage user={user} decks={decks} />} />
             <Route path="/profile" element={<ProfilePage />} />
             {/* change route from /deck to /deck/:id and add decks state */}
-            <Route path="/deck" element={<DeckPage user={user} />} />
+            <Route path="/deck/:id" element={<DeckPage user={user} decks={decks} />} />
             <Route path="/account" element={<AuthPage user={user} setUser={setUser} />} />
             <Route path="/*" element={<Navigate to={"/"} />} />
           </Routes>
