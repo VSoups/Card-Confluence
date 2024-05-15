@@ -10,7 +10,6 @@ const deckSchema = new Schema({
     name: {
         type: String,
         required: true,
-        // add a default value?
     },
     description: String,
     cards: [{

@@ -14,8 +14,12 @@ export default function App() {
   const [decks, setDecks] = useState([]);
 
   useEffect(() => {
-    const allDecks = decksAPI.getAllDecks();
-    setDecks(allDecks);
+    async function fetchAll() {
+      const allDecks = await decksAPI.getAllDecks();
+      console.log(allDecks);
+      setDecks(allDecks);
+    }
+    fetchAll();
   }, []);
 
   return (
@@ -24,9 +28,9 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
           <Routes>
             {/* Route components */}
-            <Route path="/" element={<HomePage user={user} />} />
+            <Route path="/" element={<HomePage user={user} decks={decks} />} />
             <Route path="/profile" element={<ProfilePage />} />
-            {/* change route from /deck to /deck/:id once deck creation is fixed */}
+            {/* change route from /deck to /deck/:id and add decks state */}
             <Route path="/deck" element={<DeckPage user={user} />} />
             <Route path="/account" element={<AuthPage user={user} setUser={setUser} />} />
             <Route path="/*" element={<Navigate to={"/"} />} />

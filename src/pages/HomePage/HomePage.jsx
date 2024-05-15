@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as deckAPI from '../../utilities/decks-api';
+import DeckPreview from '../../components/DeckPreview/DeckPreview';
 import './HomePage.css';
 
-export default function HomePage({ user }) {
+export default function HomePage({ user, decks }) {
     const [newDeck, setNewDeck] = useState(true);
     const [deckName, setDeckName] = useState('');
     const [error, setError] = useState('');
@@ -23,9 +24,10 @@ export default function HomePage({ user }) {
             if (typeof(newDeck) === 'string') setError(newDeck);
             setDeckName('');
             evt.target.name.value = '';
+            // useNavigate to deck show page
         } catch (error) {
             console.log(error);
-            setError('Create deck failed');
+            setError('Create deck failed - Network error');
             setNewDeck(false);
         }
     }
@@ -34,6 +36,9 @@ export default function HomePage({ user }) {
         const name = evt.target.value;
         setDeckName(name);
     }
+
+    // deck array for index grid
+    const fullList = decks.map((deck) => <Link to='/deck' key={deck._id}><DeckPreview deck={deck} key={deck._id} /></Link>)
 
 
     return (
@@ -54,7 +59,7 @@ export default function HomePage({ user }) {
                 </div>
             }
             <h3>Recent Decks</h3>
-            <section className="DeckGrid">decks go here</section>
+            <section className="DeckGrid">{fullList}</section>
         </>
     );
 }

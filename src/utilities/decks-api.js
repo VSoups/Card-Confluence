@@ -7,5 +7,5 @@ export async function createNewDeck(deck) {
 
 // get all decks for home/profile pages
 export async function getAllDecks() {
-    // return sendRequest(BASE_URL);
+    return sendRequest(BASE_URL);
 }
