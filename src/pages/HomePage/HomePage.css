@@ -10,6 +10,9 @@
 .NewDeckForm {
     width: 15rem;
     height: max-content;
+    display: grid;
+    position: relative;
+    left: 1.5rem;
 }
 
 .NewDeckForm {
@@ -29,12 +32,25 @@
 
 .NewDeckForm > label {
     grid-row: 1/2;
+    position: relative;
+    right: 2.9rem;
 }
 
 .CloseForm {
     grid-column-start: 2;
+    position: relative;
+    right: 7rem;
+    top: 2.6rem;
+    background-color: tomato;
+    color: white;
+}
+
+.CloseForm:hover {
+    background-color: snow;
+    color: tomato;
 }
 
 .SubmitForm {
     height: 1.5rem;
+    grid-row-start: 2;
 }

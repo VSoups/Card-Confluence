@@ -25,7 +25,7 @@ export default function LoginForm({ user, setUser }) {
       const user = await usersService.login(credentials);
       console.log('LoginForm user ', user)
       setUser(user);
-      navigate("/");
+      navigate('/');
     } catch {
       setError('Log In Failed - Try Again');
     }

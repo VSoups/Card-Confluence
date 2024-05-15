@@ -1,21 +1,33 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as deckAPI from '../../utilities/decks-api';
 import './HomePage.css';
 
 export default function HomePage({ user }) {
     const [newDeck, setNewDeck] = useState(true);
     const [deckName, setDeckName] = useState('');
+    const [error, setError] = useState('');
 
     function showNewDeck() {
         newDeck ? setNewDeck(false) : setNewDeck(true);
     }
 
     async function handleNewDeck(evt) {
+        evt.preventDefault();
         const deck = {
             name: deckName,
             user: user._id,
         }
-        const newDeck = await deckAPI.createNewDeck(deck);
+        try {
+            const newDeck = await deckAPI.createNewDeck(deck);
+            if (typeof(newDeck) === 'string') setError(newDeck);
+            setDeckName('');
+            evt.target.name.value = '';
+        } catch (error) {
+            console.log(error);
+            setError('Create deck failed');
+            setNewDeck(false);
+        }
     }
 
     function handleText(evt) {
@@ -30,12 +42,15 @@ export default function HomePage({ user }) {
             { (user) &&
                 <div className="NewDeck">
                     <button onClick={showNewDeck} style={{display:newDeck ? "block" : "none"}}>New Deck</button>
-                    <form onSubmit={handleNewDeck} style={{display:newDeck ? "none" : "grid"}} className="NewDeckForm">
+                    <section style={{display:newDeck ? "none" : "block"}}>
                         <button onClick={showNewDeck} className="CloseForm">X</button>
-                        <label>Deck Name:</label>
-                        <input type="text" onChange={handleText} name="name" />
-                        <button type="submit" className="SubmitForm">Create</button>
-                    </form>
+                        <form onSubmit={handleNewDeck} className="NewDeckForm">
+                            <label>Deck Name:</label>
+                            <input type="text" onChange={handleText} name="name" placeholder='Lotus Field Combo...' />
+                            <button type="submit" className="SubmitForm">Create</button>
+                        </form>
+                    </section>
+                    <p>{error}</p>
                 </div>
             }
             <h3>Recent Decks</h3>
