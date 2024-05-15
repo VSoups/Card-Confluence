@@ -1,20 +1,28 @@
 const Deck = require('../../models/deck');
+const Card = require('../../models/card');
 
 module.exports = {
     index,
     create,
-    getOne,
     addCard,
 };
 
 async function addCard(req, res) {
+    const deck = await Deck.findById(req.body.deckID);
     
-}
-
-// delete?
-async function getOne(req, res) {
-    const deck = await Deck.findById(req.params.id);
-    console.log(deck);
+    const deckCard = deck.cards.find(card => card.card._id.equals(req.params.cardID));
+    if (deckCard) {
+        deckCard.qty += 1;
+        console.log('---decksCtrl: add one---', deckCard);
+    } else {
+        const pushCard = {
+            qty: 1,
+            card: req.params.cardID,
+        }
+        deck.cards.push(pushCard);
+        console.log('---decksCtrl: deck cards---', deck.cards);
+    }
+    return deck.save();
 }
 
 async function index(req, res) {

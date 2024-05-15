@@ -62,7 +62,7 @@ export default function HomePage({ user, decks }) {
                 </div>
             }
             <h3>Recent Decks</h3>
-            <section className="DeckGrid">{fullList}</section>
+            <section className="DeckGrid">{fullList <= 0 ? <p>No decks yet</p> : fullList}</section>
         </>
     );
 }

@@ -4,7 +4,11 @@ const cardSchema = require('./card');
 
 const cardListSchema = new Schema({
     qty: { type: Number, default: 1 },
-    // card: cardSchema,
+    card: {
+        type: Schema.Types.ObjectId,
+        ref: 'Card',
+        required: true,
+    },
 }, {
     timestamps: true,
     toJSON: { virtuals: true },
@@ -21,10 +25,7 @@ const deckSchema = new Schema({
         required: true,
     },
     description: String,
-    cards: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Card'
-    }],
+    cards: [cardListSchema],
     format: String,
     likedBy: [{
         type: Schema.Types.ObjectId,
@@ -32,6 +33,7 @@ const deckSchema = new Schema({
     }],
 }, {
     timestamps: true,
+    toJSON: { virtuals: true },
 });
 
 

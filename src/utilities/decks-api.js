@@ -15,7 +15,7 @@ export async function getAll() {
 //     return sendRequest(`${BASE_URL}/view/:id`);
 // }
 
-export async function addCard({ cardId, deckID }) {
-    console.log(cardId, deckID);
-    return sendRequest(`${BASE_URL}/add/${cardId}`, 'POST');
+export async function addCard({ cardID, deckID }) {
+    console.log(cardID, deckID);
+    return sendRequest(`${BASE_URL}/add/${cardID}`, 'POST', {deckID});
 }

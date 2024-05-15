@@ -27,7 +27,7 @@ export default function CardSearch({ setSearchCard }) {
   }
   return (
     <>
-      <form onSubmit={cardSearch}>
+      <form onSubmit={cardSearch} className="CardSearchForm">
         <label>Add Card</label>
         <input type="text" name="name" onChange={handleInput} placeholder="Search for a card" />
         <button type="submit">Search</button>

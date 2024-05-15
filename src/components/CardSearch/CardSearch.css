@@ -1,4 +1,4 @@
-form {
+.CardSearchForm {
     display: grid;
     grid-template-columns: 1fr 1fr 0.5fr;
     grid-template-rows: 0.5fr auto;
@@ -6,6 +6,6 @@ form {
     row-gap: 2px;
 }
 
-form > input {
+.CardSearchForm > input, .CardSearchForm > p{
     grid-column: 1 / 3;
 }
