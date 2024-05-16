@@ -50,7 +50,7 @@ export default function HomePage({ user, decks }) {
             <hr/>
             { (user) &&
                 <div className="NewDeck">
-                    <button onClick={showNewDeck} style={{display:newDeck ? "block" : "none"}}>New Deck</button>
+                    <button onClick={showNewDeck} style={{display:newDeck ? "block" : "none"}} className="NewDeckBtn">New Deck</button>
                     <section style={{display:newDeck ? "none" : "block"}}>
                         <button onClick={showNewDeck} className="CloseForm">X</button>
                         <form onSubmit={handleNewDeck} className="NewDeckForm">

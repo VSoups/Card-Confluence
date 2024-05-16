@@ -11,9 +11,13 @@
     margin: 0 auto;
 }
 
+.DeckBox:hover {
+    border-color: aqua;
+}
+
 .DeckInfo {
     height: 5rem;
-    background-color: rgba(0, 0, 0, 0.33);
+    background-color: rgba(0, 0, 0, 0.50);
     background-size: auto;
     color: white;
     align-self: flex-end;

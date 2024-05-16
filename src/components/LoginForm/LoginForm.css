@@ -1,0 +1,30 @@
+.FormContainer {
+    border: 3px solid black;
+    background-color: aliceblue;
+    border-radius: 10%;
+    width: 25rem;
+    height: max-content;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.LoginForm {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    row-gap: 1rem;
+}
+
+.LoginForm input {
+    padding: 2px 1px;
+}
+
+.LoginForm > button {
+    margin-top: 10px;
+    grid-column: 1 / 3;
+    background-color: mediumaquamarine;
+    padding: 3px 0;
+}
+
+.LoginForm > button:hover {
+    background-color: springgreen;
+}
