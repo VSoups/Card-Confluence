@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const cardSchema = require('./card');
+const userSchema = require('./user');
 
 const cardListSchema = new Schema({
     qty: { type: Number, default: 1 },

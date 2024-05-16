@@ -17,3 +17,7 @@ export async function checkToken() {
   return sendRequest(`${BASE_URL}/check-token`);
   // this is a 'GET' request which we set up as the default, and 'GET' requests do not have a payload
 }
+
+export async function getUsername(userID) {
+  return sendRequest(`${BASE_URL}/username`);
+}

@@ -10,7 +10,7 @@ export default function HomePage({ user, decks }) {
     const [error, setError] = useState('');
     // deck array for index grid
     const fullList = decks.sort((d1, d2) => new Date(d2.createdAt) - new Date(d1.createdAt))
-    .map((deck) => <Link to={`deck/${deck._id}`} key={deck._id}><DeckPreview deck={deck} key={deck._id} /></Link>);
+    .map((deck) => <Link to={`deck/${deck._id}`} deck={deck} key={deck._id}><DeckPreview deck={deck} key={deck._id} /></Link>);
 
     // hide/show new deck form
     function showNewDeck() {
@@ -47,6 +47,7 @@ export default function HomePage({ user, decks }) {
     return (
         <>
             <h1>Home</h1>
+            <hr/>
             { (user) &&
                 <div className="NewDeck">
                     <button onClick={showNewDeck} style={{display:newDeck ? "block" : "none"}}>New Deck</button>

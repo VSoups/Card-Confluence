@@ -8,10 +8,13 @@ export default function CardSearch({ setSearchCard }) {
 
   async function cardSearch(evt) {
     evt.preventDefault();
+    // setSearchCard(null);
+    // setError('');
     let inputCard = card.split(' ').join('+');
     try {
       const fetchCard = await cardsAPI.getCardByName(inputCard);
-      // console.log(fetchCard);
+      if (typeof(fetchCard) === 'string') return setError('Search Error: Card not found');
+      setError('');
       setSearchCard(fetchCard);
     } catch (error) {
       console.log(error);

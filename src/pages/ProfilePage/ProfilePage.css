@@ -1,0 +1,10 @@
+.UserDecks {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr  1fr;
+    gap: 1rem;
+    margin: 0 3vmin;
+}
+
+.UserDecks > h3 {
+    grid-column: 1 / end;
+}

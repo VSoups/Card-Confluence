@@ -5,7 +5,12 @@ const User = require('../../models/user');
 module.exports = {
   create,
   login,
+  getName,
 };
+
+async function getName(req, res) {
+  // query User model for name
+}
 
 async function create(req, res) {
   try {

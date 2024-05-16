@@ -7,7 +7,7 @@ export default function FoundCard({ searchCard, setSearchCard, deckID }) {
     }
 
     function addCard() {
-        // console.log(searchCard);
+        console.log(searchCard);
         decksAPI.addCard({ cardID: searchCard._id, deckID: deckID});
     }
 

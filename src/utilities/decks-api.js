@@ -11,11 +11,11 @@ export async function getAll() {
     return sendRequest(BASE_URL);
 }
 
-// export async function getSelected() {
-//     return sendRequest(`${BASE_URL}/view/:id`);
-// }
-
 export async function addCard({ cardID, deckID }) {
     console.log(cardID, deckID);
     return sendRequest(`${BASE_URL}/add/${cardID}`, 'POST', {deckID});
+}
+
+export async function minusCard({ cardID, deckID }) {
+    return sendRequest(`${BASE_URL}/minus/${cardID}`, 'POST', {deckID});
 }

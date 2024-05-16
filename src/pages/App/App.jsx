@@ -31,7 +31,7 @@ export default function App() {
           <Routes>
             {/* Route components */}
             <Route path="/" element={<HomePage user={user} decks={decks} />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile" element={<ProfilePage user={user} decks={decks} />} />
             {/* change route from /deck to /deck/:id and add decks state */}
             <Route path="/deck/:id" element={<DeckPage user={user} decks={decks} />} />
             <Route path="/account" element={<AuthPage user={user} setUser={setUser} />} />
