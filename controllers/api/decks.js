@@ -45,7 +45,7 @@ async function addCard(req, res) {
 
 // fetch all decks
 async function index(req, res) {
-    const decks = await Deck.find({}).populate('cards.card'); // returns array of all decks
+    const decks = await Deck.find({}).populate('cards.card').populate('user'); // returns array of all decks
     res.json(decks);
 }
 

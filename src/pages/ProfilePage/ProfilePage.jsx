@@ -17,7 +17,6 @@ export default function Profile({ user, decks }) {
   }, []);
 
   const userIndex = userDecks.map((deck) => <DeckPreview deck={deck} />)
-  console.log('userIndex: ', userIndex);
 
   return (
     <main className="ProfileMain">

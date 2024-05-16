@@ -18,11 +18,12 @@ export default function App() {
   useEffect(() => {
     async function fetchAll() {
       const allDecks = await decksAPI.getAll();
-      // console.log(allDecks);
       setDecks(allDecks);
     }
     fetchAll();
   }, []);
+
+  console.log(decks);
 
   return (
     <main className="App">

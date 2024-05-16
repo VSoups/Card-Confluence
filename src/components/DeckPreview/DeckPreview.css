@@ -13,7 +13,7 @@
 
 .DeckInfo {
     height: 5rem;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.33);
     background-size: auto;
     color: white;
     align-self: flex-end;
@@ -22,5 +22,5 @@
 }
 
 .DeckInfo > p, .DeckInfo > h4 {
-    margin: 10px;
+    margin: 5px;
 }
