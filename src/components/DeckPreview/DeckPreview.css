@@ -9,11 +9,14 @@
     justify-content: end;
     align-items: center;
     margin: 0 auto;
-    
 }
 
 .DeckBox:hover {
     border-color: aqua;
+}
+
+.DeckBox * {
+    text-decoration: none;
 }
 
 .DeckInfo {

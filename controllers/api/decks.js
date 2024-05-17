@@ -49,7 +49,8 @@ async function addCard(req, res) {
         deck.cards.push(pushCard);
         console.log('---decksCtrl: deck cards---', deck.cards);
     }
-    return deck.save();
+    deck.save();
+    return res.json(deck);
 }
 
 // fetch all decks

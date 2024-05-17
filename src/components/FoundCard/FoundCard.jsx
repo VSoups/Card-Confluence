@@ -1,14 +1,14 @@
 import * as decksAPI from '../../utilities/decks-api';
 import './FoundCard.css';
 
-export default function FoundCard({ searchCard, setSearchCard, deckID }) {
+export default function FoundCard({ searchCard, setSearchCard, setCardAdded, deckID }) {
     function closePreview() {
         setSearchCard(null);
     }
 
-    function addCard() {
-        console.log(searchCard);
-        decksAPI.addCard({ cardID: searchCard._id, deckID: deckID});
+    async function addCard() {
+        await decksAPI.addCard({ cardID: searchCard._id, deckID: deckID});
+        setCardAdded(true);
     }
 
     return (

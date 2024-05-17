@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 import * as deckAPI from '../../utilities/decks-api';
 import DeckPreview from '../../components/DeckPreview/DeckPreview';
 import './HomePage.css';
@@ -7,6 +8,7 @@ export default function HomePage({ user, decks }) {
     const [newDeck, setNewDeck] = useState(true);
     const [deckName, setDeckName] = useState('');
     const [error, setError] = useState('');
+    // const navigate = useNavigate();
     // deck array for index grid
     const fullList = decks.sort((d1, d2) => new Date(d2.createdAt) - new Date(d1.createdAt))
     .map((deck) => <DeckPreview deck={deck} user={user} key={deck._id} />);
@@ -28,7 +30,9 @@ export default function HomePage({ user, decks }) {
             if (typeof(newDeck) === 'string') setError(newDeck);
             setDeckName('');
             evt.target.name.value = '';
+            console.log(newDeck);
             // useNavigate to deck show page
+            // navigate(`/deck/${newDeck._id};`)
         } catch (error) {
             console.log(error);
             setError('Create deck failed - Network error');

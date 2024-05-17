@@ -12,7 +12,6 @@ export async function getAll() {
 }
 
 export async function addCard({ cardID, deckID }) {
-    console.log(cardID, deckID);
     return sendRequest(`${BASE_URL}/add/${cardID}`, 'POST', {deckID});
 }
 

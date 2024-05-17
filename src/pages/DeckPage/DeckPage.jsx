@@ -9,6 +9,7 @@ export default function DeckPage({ user, decks }) {
   const [deckDetails, setDeckDetails] = useState(null);
   const [cardList, setCardList] = useState([]);
   const [searchCard, setSearchCard] = useState(null);
+  const [cardAdded, setCardAdded] = useState(false);
   const [userID, setUserID] = useState('');
   const { id } = useParams();
 
@@ -21,21 +22,16 @@ export default function DeckPage({ user, decks }) {
   }, [user]);
 
   useEffect(() => {
-    console.log('useEffect');
+    setCardAdded(false);
     async function getDeck() {
         const deck = await decks.find((d) => d._id === id);
-        console.log('---FETCHED DECK---', deck);
         setDeckDetails(deck);
         setCardList(deck.cards);
       }
       getDeck();
-  }, [id, decks]);
+  }, [id, decks, cardAdded]);
   
   const cards = cardList.map((card) => <CardBox card={card} deckID={id} deckUser={deckDetails.user._id} userID={userID} key={card._id} />)
-  // console.log('---DECK---', deckDetails);
-  // console.log('---USER---', userID);
-  // console.log('---CARDS---', cardList);
-  // console.log(cardList);
 
 
   return (
@@ -51,7 +47,7 @@ export default function DeckPage({ user, decks }) {
               </div>
               {searchCard && 
                 <div className="PreviewPanel">
-                  <FoundCard searchCard={searchCard} setSearchCard={setSearchCard} deckID={id} />
+                  <FoundCard searchCard={searchCard} setSearchCard={setSearchCard} setCardAdded={setCardAdded} deckID={id} />
                 </div>
               }
             </section>
