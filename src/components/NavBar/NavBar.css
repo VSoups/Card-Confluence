@@ -1,5 +1,10 @@
 nav {
     margin-top: 1rem;
+    border-inline: 3px solid black;
+    width: max-content;
+    padding: 1rem 0.25rem;
+    margin: 1rem auto;
+    background-color: aliceblue;
 }
 
 nav > span {
@@ -11,7 +16,7 @@ nav > span {
     background-color: royalblue;
     color: white;
     text-decoration: none;
-    padding: 5px 10px;
+    padding: 3px 7px;
     border-radius: 10%;
     margin: 0 5px;
 }

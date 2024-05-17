@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import * as deckAPI from '../../utilities/decks-api';
 import DeckPreview from '../../components/DeckPreview/DeckPreview';
 import './HomePage.css';
@@ -10,7 +9,7 @@ export default function HomePage({ user, decks }) {
     const [error, setError] = useState('');
     // deck array for index grid
     const fullList = decks.sort((d1, d2) => new Date(d2.createdAt) - new Date(d1.createdAt))
-    .map((deck) => <Link to={`deck/${deck._id}`} deck={deck} key={deck._id}><DeckPreview deck={deck} key={deck._id} /></Link>);
+    .map((deck) => <DeckPreview deck={deck} user={user} key={deck._id} />);
 
     // hide/show new deck form
     function showNewDeck() {

@@ -14,6 +14,8 @@ router.post('/new', ensureLoggedIn, decksCtrl.create);
 router.post('/add/:cardID', ensureLoggedIn, decksCtrl.addCard);
 // POST /api/decks/minus/:cardID (remove one card)
 router.post('/minus/:cardID', ensureLoggedIn, decksCtrl.minusCard);
+// DELETE /api/decks/delete (delete deck)
+router.delete('/delete', ensureLoggedIn, decksCtrl.delete);
 
 
 module.exports = router;

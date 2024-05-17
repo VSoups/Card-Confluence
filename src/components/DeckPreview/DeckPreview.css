@@ -5,8 +5,8 @@
     height: 10rem;
     width: 18rem;
     display: flex;
-    /* flex-direction: column; */
-    justify-content: center;
+    flex-direction: column;
+    justify-content: end;
     align-items: center;
     margin: 0 auto;
     
@@ -21,11 +21,24 @@
     background-color: rgba(0, 0, 0, 0.50);
     background-size: auto;
     color: white;
-    align-self: flex-end;
     width: 100%;
     border-radius: 0 0 1.4rem 1.4rem;
 }
 
 .DeckInfo > p, .DeckInfo > h4 {
     margin: 5px;
+}
+
+.DeleteDeck {
+    height: max-content;
+    width: max-content;
+    position: relative;
+    right: -7rem;
+    bottom: 9rem;
+    background-color: tomato;
+}
+
+.DeleteDeck:hover {
+    background-color: white;
+    border-color: tomato;
 }

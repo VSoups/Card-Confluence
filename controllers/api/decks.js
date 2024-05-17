@@ -5,7 +5,16 @@ module.exports = {
     create,
     addCard,
     minusCard,
+    delete: deleteOne,
 };
+
+// delete one deck
+async function deleteOne(req, res) {
+    // console.log('DECK: ', req.body.deck, 'USER: ', req.body.user);
+    if (req.body.deck.user._id !== req.body.user._id) return;
+    const deleted = await Deck.findOneAndDelete({user: req.body.deck.user._id, id: req.body.deck._id});
+    res.json(deleted);
+}
 
 // delete one copy of card
 async function minusCard(req, res) {

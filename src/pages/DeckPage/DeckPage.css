@@ -10,3 +10,25 @@
     width: max-content;
 }
 
+.CardList {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: 2rem 15vmin;
+    gap: 1.5rem;
+}
+
+.CardList > p {
+    grid-column: 1 / end;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: max-content;
+    padding: 3px 10px;
+    margin: 0 auto;
+}
+
+.ShowTitle {
+    margin-bottom: 0;
+}
+
+.ShowUser {
+    margin-top: 0;
+}

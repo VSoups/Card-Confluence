@@ -23,7 +23,7 @@ export default function App() {
     fetchAll();
   }, []);
 
-  console.log(decks);
+  // console.log(decks);
 
   return (
     <main className="App">

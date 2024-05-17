@@ -1,0 +1,28 @@
+.CardBox > p {
+    background-color: white;
+    border: 1px solid black;
+    width: max-content;
+    padding: 2px 5px;
+    margin: 5px auto;
+    border-radius: 25%;
+}
+
+.CardBox > button:first-of-type {
+    background-color: greenyellow;
+    color: black;
+}
+
+.CardBox > button:first-of-type:hover {
+    border-color: greenyellow;
+    background-color: white;
+}
+
+.CardBox > button:last-of-type {
+    background-color: tomato;
+    color: black;
+}
+
+.CardBox > button:last-of-type:hover {
+    border-color: tomato;
+    background-color: white;
+}

@@ -10,13 +10,14 @@ export default function Profile({ user, decks }) {
 
   useEffect(() => {
     async function getUserDecks() {
-      const userList = await decks.filter((d) => d.user === user._id);
+      const userList = await decks.filter((d) => d.user._id === user._id);
       setUserDecks(userList);
     }
     getUserDecks();
-  }, []);
+  }, [user, decks]);
+  
 
-  const userIndex = userDecks.map((deck) => <DeckPreview deck={deck} />)
+  const userIndex = userDecks.map((deck) => <DeckPreview deck={deck} user={user} key={deck._id} />);
 
   return (
     <main className="ProfileMain">

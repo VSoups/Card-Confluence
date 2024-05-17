@@ -12,22 +12,26 @@ export default function DeckPage({ user, decks }) {
   const [userID, setUserID] = useState('');
   const { id } = useParams();
 
-  if (user) {
-    setUserID(user._id);
-  } else {
-    setUserID('');
-  }
+  useEffect(() => {
+    if (user) {
+      setUserID(user._id);
+    } else {
+      setUserID('');
+    }
+  }, [user]);
 
   useEffect(() => {
+    console.log('useEffect');
     async function getDeck() {
         const deck = await decks.find((d) => d._id === id);
+        console.log('---FETCHED DECK---', deck);
         setDeckDetails(deck);
         setCardList(deck.cards);
       }
       getDeck();
   }, [id, decks]);
   
-  const cards = cardList.map((card) => <CardBox card={card} deckID={id} deckUser={deckDetails.user} userID={userID} key={card._id} />)
+  const cards = cardList.map((card) => <CardBox card={card} deckID={id} deckUser={deckDetails.user._id} userID={userID} key={card._id} />)
   // console.log('---DECK---', deckDetails);
   // console.log('---USER---', userID);
   // console.log('---CARDS---', cardList);
@@ -38,8 +42,9 @@ export default function DeckPage({ user, decks }) {
     <main className="DeckShow">
       {deckDetails && (
         <>
-          <h1>{deckDetails.name}</h1>
-          {userID === deckDetails.user && 
+          <h1 className="ShowTitle">{deckDetails.name}</h1>\
+          <h3 className="ShowUser">Made by: {deckDetails.user.name}</h3>
+          {userID === deckDetails.user._id && 
             <section className="CardAdding">
               <div className="SearchBox">
                 <CardSearch setSearchCard={setSearchCard} />

@@ -1,4 +1,5 @@
 import * as decksAPI from '../../utilities/decks-api';
+import './CardBox.css'
 
 export default function CardBox({ card, deckID, deckUser, userID }) {
     function addCard() {

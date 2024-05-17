@@ -19,3 +19,7 @@ export async function addCard({ cardID, deckID }) {
 export async function minusCard({ cardID, deckID }) {
     return sendRequest(`${BASE_URL}/minus/${cardID}`, 'POST', {deckID});
 }
+
+export async function deleteDeck(deck, user) {
+    return sendRequest(`${BASE_URL}/delete`, 'DELETE', {deck, user})
+}
